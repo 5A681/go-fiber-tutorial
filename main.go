@@ -24,10 +24,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db.Table("test").AutoMigrate(&Book{})
+	db.Table("book").AutoMigrate(&Book{})
 
-	var book Book
+	var book []Book
 
-	db.First(&book, 1)
+	db.Where([]int64{1, 2}).Find(&book)
 	fmt.Println(book)
 }
